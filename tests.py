@@ -3,6 +3,7 @@
 from two_sum import Solution as twoSumSolution
 from longest_common_prefix import Solution as LongestCommonPrefix
 from reverse import Solution as Reverse
+from is_palindrome import Solution as IsPalindrome
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
@@ -94,6 +95,17 @@ class TestReverse(unittest.TestCase):
         self.assertEqual(321, self.r.reverse(123))
         self.assertEqual(-321, self.r.reverse(-123))
         self.assertEqual(21, self.r.reverse(120))
+
+
+class TestIsPalindrome(unittest.TestCase):
+
+    def setUp(self):
+        self.ip = IsPalindrome()
+
+    def test_is_palindrome(self):
+        self.assertEqual(True, self.ip.isPalindrome(121))
+        self.assertEqual(False, self.ip.isPalindrome(-121))
+        self.assertEqual(False, self.ip.isPalindrome(10))
 
 
 if __name__ == "__main__":
