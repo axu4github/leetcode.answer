@@ -30,3 +30,16 @@ class Solution(object):
                     return [i, i + j + 1]
 
         return [None, None]
+
+    def twoSumPerformance(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i, one_num in enumerate(nums):
+            two_num = target - one_num
+            if two_num in nums[i + 1:]:
+                return [i, nums.index(two_num, i + 1)]
+
+        return [None, None]
