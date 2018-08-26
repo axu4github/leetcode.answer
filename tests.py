@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from two_sum import Solution as twoSumSolution
+from longest_common_prefix import Solution as LongestCommonPrefix
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
@@ -17,6 +18,16 @@ class TestPython(unittest.TestCase):
 
     def test_list_in(self):
         self.assertTrue(2 in [0, 0, 1, 1, 2, 2])
+
+    def test_map(self):
+        strs, i = ["flower", "flow", "flight"], 0
+        self.assertEqual(["f", "f", "f"], map(lambda x: x[i], strs))
+        self.assertEqual(strs, strs)
+
+        try:
+            map(lambda x: x[4], strs)
+        except Exception as e:
+            self.assertTrue("out of" in str(e))
 
 
 class TestTwoSum(unittest.TestCase):
@@ -52,6 +63,18 @@ class TestTwoSum(unittest.TestCase):
             nums[8012], target = -1, 16021
             self.assertEqual(
                 [8011, 8012], self.ts.twoSumPerformance(nums, target))
+
+
+class TestLongestCommonPrefix(unittest.TestCase):
+
+    def setUp(self):
+        self.lcp = LongestCommonPrefix()
+
+    def test_longest_common_prefix(self):
+        self.assertEqual(
+            "fl", self.lcp.longestCommonPrefix(["flower", "flow", "flight"]))
+        self.assertEqual(
+            "", self.lcp.longestCommonPrefix(["dog", "racecar", "car"]))
 
 
 if __name__ == "__main__":
