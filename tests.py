@@ -30,7 +30,7 @@ class TestTwoSum(unittest.TestCase):
         self.assertEqual([None, None], self.ts.twoSum([], 9))
         self.assertEqual([None, None], self.ts.twoSum([9], 9))
 
-    def test_two_sum_performance(self):
+    def test_two_sum_performance_correct(self):
         self.assertEqual(
             [0, 1], self.ts.twoSumPerformance([2, 7, 9, 11, 15], 9))
         self.assertEqual(
@@ -44,6 +44,7 @@ class TestTwoSum(unittest.TestCase):
         self.assertEqual(
             [2, 4], self.ts.twoSumPerformance([-1, -2, -3, -4, -5], -8))
 
+    def test_two_sum_performance(self):
         nums = filter(lambda num: num % 2 == 0, range(0, 25197))
         nums[8012], target = -1, 16021
         self.assertEqual([8011, 8012], self.ts.twoSumPerformance(nums, target))
