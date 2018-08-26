@@ -2,6 +2,7 @@
 
 from two_sum import Solution as twoSumSolution
 from longest_common_prefix import Solution as LongestCommonPrefix
+from reverse import Solution as Reverse
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
@@ -28,6 +29,13 @@ class TestPython(unittest.TestCase):
             map(lambda x: x[4], strs)
         except Exception as e:
             self.assertTrue("out of" in str(e))
+
+    def test_str(self):
+        self.assertEqual("321-", "-123"[::-1])
+        self.assertEqual("321", "-123"[1:][::-1])
+
+    def test_int(self):
+        self.assertEqual(2147483648, 2**31)
 
 
 class TestTwoSum(unittest.TestCase):
@@ -75,6 +83,17 @@ class TestLongestCommonPrefix(unittest.TestCase):
             "fl", self.lcp.longestCommonPrefix(["flower", "flow", "flight"]))
         self.assertEqual(
             "", self.lcp.longestCommonPrefix(["dog", "racecar", "car"]))
+
+
+class TestReverse(unittest.TestCase):
+
+    def setUp(self):
+        self.r = Reverse()
+
+    def test_reverse(self):
+        self.assertEqual(321, self.r.reverse(123))
+        self.assertEqual(-321, self.r.reverse(-123))
+        self.assertEqual(21, self.r.reverse(120))
 
 
 if __name__ == "__main__":
