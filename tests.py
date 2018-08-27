@@ -23,6 +23,7 @@ class TestPython(unittest.TestCase):
 
     def test_map(self):
         strs, i = ["flower", "flow", "flight"], 0
+
         self.assertEqual(["f", "f", "f"], map(lambda x: x[i], strs))
         self.assertEqual(strs, strs)
 
@@ -37,6 +38,11 @@ class TestPython(unittest.TestCase):
 
     def test_int(self):
         self.assertEqual(2147483648, 2**31)
+        self.assertEqual(0, 1122 % 11)
+
+    def test_range(self):
+        self.assertTrue(22 in range(11, 100, 11))
+        self.assertEqual(9, len(range(11, 100, 11)))
 
 
 class TestTwoSum(unittest.TestCase):
@@ -103,9 +109,25 @@ class TestIsPalindrome(unittest.TestCase):
         self.ip = IsPalindrome()
 
     def test_is_palindrome(self):
-        self.assertEqual(True, self.ip.isPalindrome(121))
-        self.assertEqual(False, self.ip.isPalindrome(-121))
-        self.assertEqual(False, self.ip.isPalindrome(10))
+        self.assertTrue(self.ip.isPalindrome(121))
+        self.assertTrue(not self.ip.isPalindrome(-121))
+        self.assertTrue(not self.ip.isPalindrome(10))
+        self.assertTrue(self.ip.isPalindrome(313))
+
+    def test_is_palindrome_for_int(self):
+        self.assertTrue(self.ip.isPalindromeForInt(121))
+        self.assertTrue(not self.ip.isPalindromeForInt(-121))
+        self.assertTrue(not self.ip.isPalindromeForInt(10))
+        self.assertTrue(self.ip.isPalindromeForInt(313))
+        self.assertTrue(not self.ip.isPalindromeForInt(1122))
+        self.assertTrue(self.ip.isPalindromeForInt(11))
+
+    def test_fill_digits(self):
+        self.assertEqual(11, self.ip.fill_digits(1, 1))
+        self.assertEqual(111, self.ip.fill_digits(11, 2))
+        self.assertEqual(
+            1111, self.ip.fill_digits(self.ip.fill_digits(11, 2), 3))
+        self.assertEqual(11122, self.ip.fill_digits(1122, 4))
 
 
 if __name__ == "__main__":

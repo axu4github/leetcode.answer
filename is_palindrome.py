@@ -39,3 +39,34 @@ class Solution(object):
         else:
             _str = str(x)
             return _str == _str[::-1]
+
+    def get_digits_number(self, num):
+        digits_number, digits = 0, {}
+        while num != 0:
+            new_num = num / 10
+            digits_number += 1
+            digits[digits_number] = num - new_num * 10
+            num = new_num
+
+        return digits_number, digits
+
+    def fill_digits(self, num, digits_number):
+        digits = digits_number / 2 + 1
+        return num * 10 + (num % 10**digits - num * 10 % 10**digits)
+
+    def isPalindromeForInt(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x < 0:
+            return False
+        elif x < 10:
+            return True
+        else:
+            digits_number, digits = self.get_digits_number(x)
+            if digits_number % 2 == 0:
+                mid_num = digits_number / 2
+                return digits[mid_num] == digits[mid_num + 1] and x % 11 == 0
+            else:
+                return self.fill_digits(x, digits_number) % 11 == 0
