@@ -38,9 +38,4 @@ class Solution(object):
             return True
         else:
             _str = str(x)
-            _str_len = len(_str)
-            mid = _str_len / 2
-            if _str_len % 2 == 0:
-                return _str[0:mid] == _str[mid:][::-1]
-            else:
-                return _str[0:mid + 1] == _str[mid:][::-1]
+            return _str == _str[::-1]
