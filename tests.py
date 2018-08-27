@@ -4,6 +4,7 @@ from two_sum import Solution as twoSumSolution
 from longest_common_prefix import Solution as LongestCommonPrefix
 from reverse import Solution as Reverse
 from is_palindrome import Solution as IsPalindrome
+from is_valid import Solution as IsValid
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
@@ -128,6 +129,22 @@ class TestIsPalindrome(unittest.TestCase):
         self.assertEqual(
             1111, self.ip.fill_digits(self.ip.fill_digits(11, 2), 3))
         self.assertEqual(11122, self.ip.fill_digits(1122, 4))
+
+
+class TestIsValid(unittest.TestCase):
+
+    def setUp(self):
+        self.iv = IsValid()
+
+    def test_is_valid(self):
+        self.assertTrue(self.iv.isValid("()"))
+        self.assertTrue(self.iv.isValid("()[]{}"))
+        self.assertTrue(not self.iv.isValid("(]"))
+        self.assertTrue(not self.iv.isValid("([)]"))
+        self.assertTrue(self.iv.isValid("{[]}"))
+        self.assertTrue(not self.iv.isValid("]"))
+        self.assertTrue(self.iv.isValid(""))
+        self.assertTrue(not self.iv.isValid("[])"))
 
 
 if __name__ == "__main__":
