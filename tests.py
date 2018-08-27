@@ -5,6 +5,7 @@ from longest_common_prefix import Solution as LongestCommonPrefix
 from reverse import Solution as Reverse
 from is_palindrome import Solution as IsPalindrome
 from is_valid import Solution as IsValid
+from merge_two_lists import Solution as MergeTwoLists
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
@@ -21,6 +22,15 @@ class TestPython(unittest.TestCase):
 
     def test_list_in(self):
         self.assertTrue(2 in [0, 0, 1, 1, 2, 2])
+
+    def test_list_pop(self):
+        _l = range(0, 10)
+        self.assertEqual(9, _l.pop())
+        self.assertEqual(range(0, 9), _l)
+
+        _l = range(0, 10)
+        self.assertEqual(0, _l.pop(0))
+        self.assertEqual(range(1, 10), _l)
 
     def test_map(self):
         strs, i = ["flower", "flow", "flight"], 0
@@ -145,6 +155,17 @@ class TestIsValid(unittest.TestCase):
         self.assertTrue(not self.iv.isValid("]"))
         self.assertTrue(self.iv.isValid(""))
         self.assertTrue(not self.iv.isValid("[])"))
+
+
+class TestMergeTwoLists(unittest.TestCase):
+
+    def setUp(self):
+        self.mtl = MergeTwoLists()
+
+    def test_merge_two_lists(self):
+        self.assertEqual(
+            [1, 1, 2, 3, 4, 4],
+            self.mtl.mergeTwoLists([1, 2, 4], [1, 3, 4]))
 
 
 if __name__ == "__main__":
