@@ -1,5 +1,7 @@
 # coding=utf-8
 
+from commons.list_node import ListNode
+
 
 class Solution(object):
 
@@ -16,17 +18,48 @@ class Solution(object):
     输出：1->1->2->3->4->4
     """
 
-    class ListNode(object):
-
-        def __init__(self, x):
-            self.val = x
-            self.next = None
-
     def mergeTwoLists(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
+        """
+        root = ListNode(0)
+        merge_listnode = root
+        while l1:
+            if l2 is not None:
+                while l2:
+                    if l1.val <= l2.val:
+                        merge_listnode.next = l1
+                        merge_listnode = merge_listnode.next
+                        break
+                    else:
+                        merge_listnode.next = l2
+                        merge_listnode = merge_listnode.next
+                        l2 = l2.next
+
+                if l2 is None:
+                    merge_listnode.next = l1
+                    merge_listnode = merge_listnode.next
+
+            else:
+                merge_listnode.next = l1
+                merge_listnode = merge_listnode.next
+
+            l1 = l1.next
+
+        while l2:
+            merge_listnode.next = l2
+            merge_listnode = merge_listnode.next
+            l2 = l2.next
+
+        return root.next
+
+    def mergeTwoListsForList(self, l1, l2):
+        """
+        :type l1: List
+        :type l2: List
+        :rtype: List
         """
         merge_nums = []
         one_nums, two_nums = l1, l2

@@ -6,6 +6,7 @@ from reverse import Solution as Reverse
 from is_palindrome import Solution as IsPalindrome
 from is_valid import Solution as IsValid
 from merge_two_lists import Solution as MergeTwoLists
+from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
@@ -165,7 +166,47 @@ class TestMergeTwoLists(unittest.TestCase):
     def test_merge_two_lists(self):
         self.assertEqual(
             [1, 1, 2, 3, 4, 4],
-            self.mtl.mergeTwoLists([1, 2, 4], [1, 3, 4]))
+            Utils.listnode_to_list(self.mtl.mergeTwoLists(
+                Utils.list_to_listnode([1, 2, 4]),
+                Utils.list_to_listnode([1, 3, 4]))))
+        self.assertEqual(
+            [1],
+            Utils.listnode_to_list(self.mtl.mergeTwoLists(
+                Utils.list_to_listnode([1]),
+                Utils.list_to_listnode([]))))
+        self.assertEqual(
+            [1, 2],
+            Utils.listnode_to_list(self.mtl.mergeTwoLists(
+                Utils.list_to_listnode([2]),
+                Utils.list_to_listnode([1]))))
+
+    def test_merge_two_lists_for_list(self):
+        self.assertEqual(
+            [1, 1, 2, 3, 4, 4],
+            self.mtl.mergeTwoListsForList([1, 2, 4], [1, 3, 4]))
+        self.assertEqual(
+            [1],
+            self.mtl.mergeTwoListsForList([1], []))
+        self.assertEqual(
+            [1, 2],
+            self.mtl.mergeTwoListsForList([2], [1]))
+
+
+class TestUtils(unittest.TestCase):
+
+    def test_list_to_listnode(self):
+        _l, i = range(0, 5), 0
+        listnode = Utils.list_to_listnode(_l)
+        while listnode:
+            self.assertEqual(_l[i], listnode.val)
+            listnode = listnode.next
+            i += 1
+
+    def test_listnode_to_list(self):
+        _l = range(0, 5)
+        listnode = Utils.list_to_listnode(_l)
+
+        self.assertEqual(_l, Utils.listnode_to_list(listnode))
 
 
 if __name__ == "__main__":
