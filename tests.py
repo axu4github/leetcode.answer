@@ -52,6 +52,13 @@ class TestPython(unittest.TestCase):
         self.assertEqual(2147483648, 2**31)
         self.assertEqual(0, 1122 % 11)
 
+        num, reverse_num = 1122, 0
+        while num > 0:
+            reverse_num = reverse_num * 10 + num % 10
+            num = num / 10
+
+        self.assertEqual(2211, reverse_num)
+
     def test_range(self):
         self.assertTrue(22 in range(11, 100, 11))
         self.assertEqual(9, len(range(11, 100, 11)))
@@ -214,6 +221,10 @@ class TestUtils(unittest.TestCase):
         listnode = Utils.list_to_listnode(_l)
 
         self.assertEqual(_l, Utils.listnode_to_list(listnode))
+
+    def test_reverse_num(self):
+        for num in range(0, 9999):
+            self.assertEqual(int(str(num)[::-1]), Utils.reverse_num(num))
 
 
 if __name__ == "__main__":

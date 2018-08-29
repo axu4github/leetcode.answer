@@ -23,3 +23,12 @@ class Utils(object):
             listnode = listnode.next
 
         return _l
+
+    @staticmethod
+    def reverse_num(num):
+        _reverse_num = 0
+        while num > 0:
+            _reverse_num = _reverse_num * 10 + num % 10
+            num = num / 10
+
+        return _reverse_num
