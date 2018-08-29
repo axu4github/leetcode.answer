@@ -56,6 +56,10 @@ class TestPython(unittest.TestCase):
         self.assertTrue(22 in range(11, 100, 11))
         self.assertEqual(9, len(range(11, 100, 11)))
 
+    def test_set(self):
+        self.assertEqual([1, 2], list(set([1, 1, 2])))
+        self.assertEqual(sorted([2, 1]), list(set([2, 1, 1])))
+
 
 class TestTwoSum(unittest.TestCase):
 
@@ -119,6 +123,9 @@ class TestIsPalindrome(unittest.TestCase):
 
     def setUp(self):
         self.ip = IsPalindrome()
+
+    def test_number_of_digits(self):
+        self.assertEqual(1, self.ip.number_of_digits(1122, 4))
 
     def test_is_palindrome(self):
         self.assertTrue(self.ip.isPalindrome(121))

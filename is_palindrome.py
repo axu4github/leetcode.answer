@@ -32,23 +32,23 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        if x < 0:
-            return False
-        elif x < 10:
-            return True
-        else:
-            _str = str(x)
-            return _str == _str[::-1]
+        return str(x) == str(x)[::-1]
 
-    def get_digits_number(self, num):
-        digits_number, digits = 0, {}
-        while num != 0:
+    def number_of_digits(self, num, digits):
+        for i in range(0, digits):
             new_num = num / 10
-            digits_number += 1
-            digits[digits_number] = num - new_num * 10
+            res = num - new_num * 10
             num = new_num
 
-        return digits_number, digits
+        return res
+
+    def get_digits_number(self, num):
+        digits_number = 0
+        while num != 0:
+            num = num / 10
+            digits_number += 1
+
+        return digits_number
 
     def fill_digits(self, num, digits_number):
         digits = digits_number / 2 + 1
@@ -64,9 +64,11 @@ class Solution(object):
         elif x < 10:
             return True
         else:
-            digits_number, digits = self.get_digits_number(x)
+            digits_number = self.get_digits_number(x)
             if digits_number % 2 == 0:
                 mid_num = digits_number / 2
-                return digits[mid_num] == digits[mid_num + 1] and x % 11 == 0
+                (one_num, two_num) = (self.number_of_digits(x, mid_num),
+                                      self.number_of_digits(x, mid_num + 1))
+                return one_num == two_num and x % 11 == 0
             else:
                 return self.fill_digits(x, digits_number) % 11 == 0
