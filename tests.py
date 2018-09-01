@@ -6,6 +6,7 @@ from reverse import Solution as Reverse
 from is_palindrome import Solution as IsPalindrome
 from is_valid import Solution as IsValid
 from merge_two_lists import Solution as MergeTwoLists
+from three_sum import Solution as ThreeSum
 from commons.utils import Utils
 import unittest
 
@@ -204,6 +205,22 @@ class TestMergeTwoLists(unittest.TestCase):
         self.assertEqual(
             [1, 2],
             self.mtl.mergeTwoListsForList([2], [1]))
+
+
+class TestThreeSum(unittest.TestCase):
+
+    def setUp(self):
+        self.ts = ThreeSum()
+
+    def test_three_sum(self):
+        self.assertEqual(
+            [[-1, -1, 2], [-1, 0, 1]],
+            self.ts.threeSum([-1, 0, 1, 2, -1, -4]))
+        self.assertEqual([[0, 0, 0]], self.ts.threeSum([0, 0, 0]))
+        self.assertEqual([[0, 0, 0]], self.ts.threeSum([0, 0, 0, 0]))
+        self.assertEqual(
+            [[-2, 1, 1], [-2, 0, 2]],
+            self.ts.threeSum([-2, 0, 1, 1, 2]))
 
 
 class TestUtils(unittest.TestCase):
