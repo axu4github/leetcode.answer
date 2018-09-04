@@ -23,11 +23,13 @@ class Solution(object):
     """
 
     def two_sum(self, nums, target):
-        all_res = []
+        all_res, _dict = [], {}
         for i, one_num in enumerate(nums):
             two_num = target - one_num
-            if two_num in nums[i + 1:]:
-                all_res.append([nums[i], nums[nums.index(two_num, i + 1)]])
+            if two_num in _dict:
+                all_res.append([one_num, two_num])
+            else:
+                _dict[one_num] = i
 
         return all_res
 
@@ -36,14 +38,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        three_sum, nums = [], sorted(nums)
+        _dict, processed, nums = {}, {}, sorted(nums)
         for i, num in enumerate(nums):
-            if num > 0:
-                break
+            if num > 0 or num in processed:
+                continue
 
             correct_nums = self.two_sum(nums[i + 1:], num * -1)
             if len(correct_nums) > 0:
+                processed[num] = None
                 for correct_num in correct_nums:
-                    three_sum.append(tuple(sorted(correct_num + [num])))
+                    correct = tuple(sorted(correct_num + [num]))
+                    if correct not in _dict:
+                        _dict[correct] = None
 
-        return [list(ts) for ts in set(three_sum)]
+        return map(lambda correct: list(correct), _dict.keys())

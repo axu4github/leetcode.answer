@@ -17,6 +17,7 @@ class TestPython(unittest.TestCase):
 
     def test_list(self):
         self.assertEqual(range(1, 10), range(0, 10)[1:])
+        self.assertEqual([0, 0, 0, 0, 0], [0] * 5)
 
     def test_list_index(self):
         self.assertEqual(4, ([0, 0, 1, 1, 2, 2].index(2)))
@@ -214,13 +215,16 @@ class TestThreeSum(unittest.TestCase):
 
     def test_three_sum(self):
         self.assertEqual(
-            [[-1, -1, 2], [-1, 0, 1]],
-            self.ts.threeSum([-1, 0, 1, 2, -1, -4]))
+            sorted([[-1, -1, 2], [-1, 0, 1]]),
+            sorted(self.ts.threeSum([-1, 0, 1, 2, -1, -4])))
         self.assertEqual([[0, 0, 0]], self.ts.threeSum([0, 0, 0]))
         self.assertEqual([[0, 0, 0]], self.ts.threeSum([0, 0, 0, 0]))
         self.assertEqual(
-            [[-2, 1, 1], [-2, 0, 2]],
-            self.ts.threeSum([-2, 0, 1, 1, 2]))
+            sorted([[-2, 1, 1], [-2, 0, 2]]),
+            sorted(self.ts.threeSum([-2, 0, 1, 1, 2])))
+
+    def test_three_sum_performance(self):
+        self.assertEqual([[0, 0, 0]], self.ts.threeSum([0] * 3000))
 
 
 class TestUtils(unittest.TestCase):
