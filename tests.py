@@ -10,10 +10,25 @@ from three_sum import Solution as ThreeSum
 from transpose_matrix import Solution as TransposeMatrix
 from array_partition_i import Solution as ArrayPartitionI
 from pascals_triangle import Solution as PascalsTriangle
+from reshape_the_matrix import Solution as ReshapeTheMatrix
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestReshapeTheMatrix(unittest.TestCase):
+
+    def setUp(self):
+        self.rtm = ReshapeTheMatrix()
+
+    def test_transpose(self):
+        self.assertEqual(
+            [[1, 2, 3, 4]], self.rtm.matrixReshape([[1, 2], [3, 4]], 1, 4))
+        self.assertEqual(
+            [[1, 2], [3, 4]], self.rtm.matrixReshape([[1, 2], [3, 4]], 2, 4))
+        self.assertEqual(
+            [[1, 2, 3]], self.rtm.matrixReshape([[1, 2], [3, 4]], 1, 3))
 
 
 class TestPascalsTriangle(unittest.TestCase):
