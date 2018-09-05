@@ -12,10 +12,21 @@ from array_partition_i import Solution as ArrayPartitionI
 from pascals_triangle import Solution as PascalsTriangle
 from reshape_the_matrix import Solution as ReshapeTheMatrix
 from toeplitz_matrix import Solution as ToeplitzMatrix
+from majority_element import Solution as MajorityElement
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestMajorityElement(unittest.TestCase):
+
+    def setUp(self):
+        self.me = MajorityElement()
+
+    def test_transpose(self):
+        self.assertEqual(3, self.me.majorityElement([3, 2, 3]))
+        self.assertEqual(2, self.me.majorityElement([2, 2, 1, 1, 1, 2, 2]))
 
 
 class TestToeplitzMatrix(unittest.TestCase):
@@ -119,6 +130,9 @@ class TestPython(unittest.TestCase):
     def test_set(self):
         self.assertEqual([1, 2], list(set([1, 1, 2])))
         self.assertEqual(sorted([2, 1]), list(set([2, 1, 1])))
+
+    # def test_sorted(self):
+    #     print(sorted({"a": 1, "b": 2, "c": 0}, key=lambda _dict: _dict.value))
 
 
 class TestTwoSum(unittest.TestCase):
