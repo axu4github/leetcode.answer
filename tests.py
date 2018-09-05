@@ -8,6 +8,7 @@ from is_valid import Solution as IsValid
 from merge_two_lists import Solution as MergeTwoLists
 from three_sum import Solution as ThreeSum
 from transpose_matrix import Solution as TransposeMatrix
+from array_partition_i import Solution as ArrayPartitionI
 from commons.utils import Utils
 import unittest
 
@@ -238,6 +239,15 @@ class TestTransposeMatrix(unittest.TestCase):
                          self.tm.transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
         self.assertEqual([[1, 4], [2, 5], [3, 6]],
                          self.tm.transpose([[1, 2, 3], [4, 5, 6]]))
+
+
+class TestArrayPartitionI(unittest.TestCase):
+
+    def setUp(self):
+        self.api = ArrayPartitionI()
+
+    def test_transpose(self):
+        self.assertEqual(4, self.api.arrayPairSum([1, 4, 3, 2]))
 
 
 class TestUtils(unittest.TestCase):
