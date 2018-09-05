@@ -13,10 +13,26 @@ from pascals_triangle import Solution as PascalsTriangle
 from reshape_the_matrix import Solution as ReshapeTheMatrix
 from toeplitz_matrix import Solution as ToeplitzMatrix
 from majority_element import Solution as MajorityElement
+from move_zeroes import Solution as MoveZeroes
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestMoveZeroes(unittest.TestCase):
+
+    def setUp(self):
+        self.mz = MoveZeroes()
+
+    def test_move_zeroes(self):
+        nums = [0, 1, 0, 3, 12]
+        self.mz.moveZeroes(nums)
+        self.assertEqual([1, 3, 12, 0, 0], nums)
+
+        nums = [0, 0, 1]
+        self.mz.moveZeroes(nums)
+        self.assertEqual([1, 0, 0], nums)
 
 
 class TestMajorityElement(unittest.TestCase):
@@ -24,7 +40,7 @@ class TestMajorityElement(unittest.TestCase):
     def setUp(self):
         self.me = MajorityElement()
 
-    def test_transpose(self):
+    def test_majority_element(self):
         self.assertEqual(3, self.me.majorityElement([3, 2, 3]))
         self.assertEqual(2, self.me.majorityElement([2, 2, 1, 1, 1, 2, 2]))
 
@@ -34,7 +50,7 @@ class TestToeplitzMatrix(unittest.TestCase):
     def setUp(self):
         self.tm = ToeplitzMatrix()
 
-    def test_transpose(self):
+    def test_toeplitz_matrix(self):
         self.assertEqual(
             True, self.tm.isToeplitzMatrix([
                 [1, 2, 3, 4],
@@ -53,7 +69,7 @@ class TestReshapeTheMatrix(unittest.TestCase):
     def setUp(self):
         self.rtm = ReshapeTheMatrix()
 
-    def test_transpose(self):
+    def test_reshape_the_matrix(self):
         self.assertEqual(
             [[1, 2, 3, 4]], self.rtm.matrixReshape([[1, 2], [3, 4]], 1, 4))
         self.assertEqual(
@@ -67,7 +83,7 @@ class TestPascalsTriangle(unittest.TestCase):
     def setUp(self):
         self.pt = PascalsTriangle()
 
-    def test_transpose(self):
+    def test_pascals_triangle(self):
         self.assertEqual(
             [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]],
             self.pt.generate(5))
@@ -130,9 +146,6 @@ class TestPython(unittest.TestCase):
     def test_set(self):
         self.assertEqual([1, 2], list(set([1, 1, 2])))
         self.assertEqual(sorted([2, 1]), list(set([2, 1, 1])))
-
-    # def test_sorted(self):
-    #     print(sorted({"a": 1, "b": 2, "c": 0}, key=lambda _dict: _dict.value))
 
 
 class TestTwoSum(unittest.TestCase):
@@ -309,7 +322,7 @@ class TestArrayPartitionI(unittest.TestCase):
     def setUp(self):
         self.api = ArrayPartitionI()
 
-    def test_transpose(self):
+    def test_array_partition_i(self):
         self.assertEqual(4, self.api.arrayPairSum([1, 4, 3, 2]))
 
 
