@@ -9,10 +9,24 @@ from merge_two_lists import Solution as MergeTwoLists
 from three_sum import Solution as ThreeSum
 from transpose_matrix import Solution as TransposeMatrix
 from array_partition_i import Solution as ArrayPartitionI
+from pascals_triangle import Solution as PascalsTriangle
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestPascalsTriangle(unittest.TestCase):
+
+    def setUp(self):
+        self.pt = PascalsTriangle()
+
+    def test_transpose(self):
+        self.assertEqual(
+            [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]],
+            self.pt.generate(5))
+        self.assertEqual([[1]], self.pt.generate(1))
+        self.assertEqual([], self.pt.generate(0))
 
 
 class TestPython(unittest.TestCase):
