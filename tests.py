@@ -14,10 +14,30 @@ from reshape_the_matrix import Solution as ReshapeTheMatrix
 from toeplitz_matrix import Solution as ToeplitzMatrix
 from majority_element import Solution as MajorityElement
 from move_zeroes import Solution as MoveZeroes
+from max_area_of_island import Solution as MaxAreaOfIsland
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestMaxAreaOfIsland(unittest.TestCase):
+
+    def setUp(self):
+        self.maoi = MaxAreaOfIsland()
+
+    def test_max_area_of_island(self):
+        self.assertEqual(
+            6,
+            self.maoi.maxAreaOfIsland([[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                                       [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                                       [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                                       [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
+                                       [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+                                       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+                                       [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                                       [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0]]
+                                      ))
 
 
 class TestMoveZeroes(unittest.TestCase):
