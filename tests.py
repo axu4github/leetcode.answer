@@ -11,10 +11,30 @@ from transpose_matrix import Solution as TransposeMatrix
 from array_partition_i import Solution as ArrayPartitionI
 from pascals_triangle import Solution as PascalsTriangle
 from reshape_the_matrix import Solution as ReshapeTheMatrix
+from toeplitz_matrix import Solution as ToeplitzMatrix
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestToeplitzMatrix(unittest.TestCase):
+
+    def setUp(self):
+        self.tm = ToeplitzMatrix()
+
+    def test_transpose(self):
+        self.assertEqual(
+            True, self.tm.isToeplitzMatrix([
+                [1, 2, 3, 4],
+                [5, 1, 2, 3],
+                [9, 5, 1, 2]
+            ]))
+        self.assertEqual(
+            False, self.tm.isToeplitzMatrix([
+                [1, 2],
+                [2, 2]
+            ]))
 
 
 class TestReshapeTheMatrix(unittest.TestCase):
