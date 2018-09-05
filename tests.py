@@ -7,6 +7,7 @@ from is_palindrome import Solution as IsPalindrome
 from is_valid import Solution as IsValid
 from merge_two_lists import Solution as MergeTwoLists
 from three_sum import Solution as ThreeSum
+from transpose_matrix import Solution as TransposeMatrix
 from commons.utils import Utils
 import unittest
 
@@ -225,6 +226,18 @@ class TestThreeSum(unittest.TestCase):
 
     def test_three_sum_performance(self):
         self.assertEqual([[0, 0, 0]], self.ts.threeSum([0] * 3000))
+
+
+class TestTransposeMatrix(unittest.TestCase):
+
+    def setUp(self):
+        self.tm = TransposeMatrix()
+
+    def test_transpose(self):
+        self.assertEqual([[1, 4, 7], [2, 5, 8], [3, 6, 9]],
+                         self.tm.transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+        self.assertEqual([[1, 4], [2, 5], [3, 6]],
+                         self.tm.transpose([[1, 2, 3], [4, 5, 6]]))
 
 
 class TestUtils(unittest.TestCase):
