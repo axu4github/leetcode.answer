@@ -40,4 +40,26 @@ class Solution(object):
         :rtype: int
         """
         # TODO
+        def is_area(num):
+            return num == 1
+
+        def get_link(area):
+            (x, y), links = area, []
+            offsets = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+            for offset_x, offset_y in offsets:
+                area_offset = (x + offset_x, y + offset_y)
+                if area_offset in areas:
+                    links.append(area_offset)
+                    del areas[area_offset]
+
+            return links
+
+        areas = {}
+        for x, nums in enumerate(grid):
+            for y, num in enumerate(nums):
+                if is_area(num):
+                    areas[(x, y)] = num
+
+        print(areas.keys())
+
         return 6
