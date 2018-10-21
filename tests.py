@@ -15,6 +15,7 @@ from toeplitz_matrix import Solution as ToeplitzMatrix
 from majority_element import Solution as MajorityElement
 from move_zeroes import Solution as MoveZeroes
 from max_area_of_island import Solution as MaxAreaOfIsland
+from reverse_string import Solution as ReverseString
 from commons.utils import Utils
 import unittest
 
@@ -346,6 +347,15 @@ class TestArrayPartitionI(unittest.TestCase):
         self.assertEqual(4, self.api.arrayPairSum([1, 4, 3, 2]))
 
 
+class TestReverseString(object):
+
+    def setUp(self):
+        self.rs = ReverseString()
+
+    def test_reverse_string(self):
+        self.assertEqual("olleh", self.rs.reverseString("hello"))
+
+
 class TestUtils(unittest.TestCase):
 
     def test_list_to_listnode(self):
@@ -365,6 +375,11 @@ class TestUtils(unittest.TestCase):
     def test_reverse_num(self):
         for num in range(0, 9999):
             self.assertEqual(int(str(num)[::-1]), Utils.reverse_num(num))
+
+    def test_list_to_treenode(self):
+        # TODO
+        _l = [3, 9, 20, None, None, 15, 7]
+        Utils.list_to_treenode(_l)
 
 
 if __name__ == "__main__":
