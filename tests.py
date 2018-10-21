@@ -17,10 +17,42 @@ from move_zeroes import Solution as MoveZeroes
 from max_area_of_island import Solution as MaxAreaOfIsland
 from reverse_string import Solution as ReverseString
 from nim_game import Solution as NimGame
+from reverse_words_in_a_string_iii import Solution as ReverseWordsIII
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestReverseWordsIII(unittest.TestCase):
+
+    def setUp(self):
+        self.rw3 = ReverseWordsIII()
+
+    def test_reverse_words(self):
+        self.assertEqual(
+            "s'teL ekat edoCteeL tsetnoc",
+            self.rw3.reverseWords("Let's take LeetCode contest"))
+
+
+class TestNimGame(unittest.TestCase):
+
+    def setUp(self):
+        self.ng = NimGame()
+
+    def test_can_win_nim(self):
+        self.assertTrue(not self.ng.canWinNim(4))
+        self.assertTrue(self.ng.canWinNim(3))
+        self.assertTrue(self.ng.canWinNim(5))
+
+
+class TestReverseString(unittest.TestCase):
+
+    def setUp(self):
+        self.rs = ReverseString()
+
+    def test_reverse_string(self):
+        self.assertEqual("olleh", self.rs.reverseString("hello"))
 
 
 class TestMaxAreaOfIsland(unittest.TestCase):
@@ -346,26 +378,6 @@ class TestArrayPartitionI(unittest.TestCase):
 
     def test_array_partition_i(self):
         self.assertEqual(4, self.api.arrayPairSum([1, 4, 3, 2]))
-
-
-class TestReverseString(unittest.TestCase):
-
-    def setUp(self):
-        self.rs = ReverseString()
-
-    def test_reverse_string(self):
-        self.assertEqual("olleh", self.rs.reverseString("hello"))
-
-
-class TestNimGame(unittest.TestCase):
-
-    def setUp(self):
-        self.ng = NimGame()
-
-    def test_can_win_nim(self):
-        self.assertTrue(not self.ng.canWinNim(4))
-        self.assertTrue(self.ng.canWinNim(3))
-        self.assertTrue(self.ng.canWinNim(5))
 
 
 class TestUtils(unittest.TestCase):
