@@ -60,6 +60,6 @@ class Solution(object):
                 if is_area(num):
                     areas[(x, y)] = num
 
-        print(areas.keys())
+        # print(areas.keys())
 
         return 6
