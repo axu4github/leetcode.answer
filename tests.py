@@ -18,10 +18,46 @@ from max_area_of_island import Solution as MaxAreaOfIsland
 from reverse_string import Solution as ReverseString
 from nim_game import Solution as NimGame
 from reverse_words_in_a_string_iii import Solution as ReverseWordsIII
+from delete_node_in_a_linked_list import Solution as DeleteNode
+from reverse_linked_list import Solution as ReverseList
+from single_number import Solution as SingleNumber
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestSingleNumber(unittest.TestCase):
+
+    def setUp(self):
+        self.sn = SingleNumber()
+
+    def test_single_number(self):
+        self.assertEqual(1, self.sn.singleNumber([2, 2, 1]))
+        self.assertEqual(4, self.sn.singleNumber([4, 1, 2, 1, 2]))
+
+
+class TestReverseList(unittest.TestCase):
+
+    def setUp(self):
+        self.rl = ReverseList()
+
+    def test_reverse_list(self):
+        self.assertEqual(
+            [None, 5, 4, 3, 2, 1],
+            Utils.listnode_to_list(
+                self.rl.reverseList(
+                    Utils.list_to_listnode([1, 2, 3, 4, 5, None]))))
+
+
+class TestDeleteNode(unittest.TestCase):
+    # TODO
+
+    def setUp(self):
+        self.dn = DeleteNode()
+
+    def test_delete_node(self):
+        pass
 
 
 class TestReverseWordsIII(unittest.TestCase):
