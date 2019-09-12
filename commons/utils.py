@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from list_node import ListNode
+from tree_node import TreeNode
 
 
 class Utils(object):
@@ -32,3 +33,7 @@ class Utils(object):
             num = num / 10
 
         return _reverse_num
+
+    @staticmethod
+    def list_to_treenode(_l):
+        pass

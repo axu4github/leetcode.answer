@@ -15,10 +15,80 @@ from toeplitz_matrix import Solution as ToeplitzMatrix
 from majority_element import Solution as MajorityElement
 from move_zeroes import Solution as MoveZeroes
 from max_area_of_island import Solution as MaxAreaOfIsland
+from reverse_string import Solution as ReverseString
+from nim_game import Solution as NimGame
+from reverse_words_in_a_string_iii import Solution as ReverseWordsIII
+from delete_node_in_a_linked_list import Solution as DeleteNode
+from reverse_linked_list import Solution as ReverseList
+from single_number import Solution as SingleNumber
 from commons.utils import Utils
 import unittest
 
 IGNORE_OTHER_PERFORMANCE_TESTS = True
+
+
+class TestSingleNumber(unittest.TestCase):
+
+    def setUp(self):
+        self.sn = SingleNumber()
+
+    def test_single_number(self):
+        self.assertEqual(1, self.sn.singleNumber([2, 2, 1]))
+        self.assertEqual(4, self.sn.singleNumber([4, 1, 2, 1, 2]))
+
+
+class TestReverseList(unittest.TestCase):
+
+    def setUp(self):
+        self.rl = ReverseList()
+
+    def test_reverse_list(self):
+        self.assertEqual(
+            [None, 5, 4, 3, 2, 1],
+            Utils.listnode_to_list(
+                self.rl.reverseList(
+                    Utils.list_to_listnode([1, 2, 3, 4, 5, None]))))
+
+
+class TestDeleteNode(unittest.TestCase):
+    # TODO
+
+    def setUp(self):
+        self.dn = DeleteNode()
+
+    def test_delete_node(self):
+        pass
+
+
+class TestReverseWordsIII(unittest.TestCase):
+
+    def setUp(self):
+        self.rw3 = ReverseWordsIII()
+
+    def test_reverse_words(self):
+        self.assertEqual(
+            "s'teL ekat edoCteeL tsetnoc",
+            self.rw3.reverseWords("Let's take LeetCode contest"))
+
+
+class TestNimGame(unittest.TestCase):
+
+    def setUp(self):
+        self.ng = NimGame()
+
+    def test_can_win_nim(self):
+        self.assertTrue(not self.ng.canWinNim(4))
+        self.assertTrue(self.ng.canWinNim(3))
+        self.assertTrue(self.ng.canWinNim(5))
+
+
+class TestReverseString(unittest.TestCase):
+
+    def setUp(self):
+        self.rs = ReverseString()
+
+    def test_reverse_string(self):
+        self.assertEqual("olleh", self.rs.reverseString("hello"))
 
 
 class TestMaxAreaOfIsland(unittest.TestCase):
@@ -365,6 +435,11 @@ class TestUtils(unittest.TestCase):
     def test_reverse_num(self):
         for num in range(0, 9999):
             self.assertEqual(int(str(num)[::-1]), Utils.reverse_num(num))
+
+    def test_list_to_treenode(self):
+        # TODO
+        _l = [3, 9, 20, None, None, 15, 7]
+        Utils.list_to_treenode(_l)
 
 
 if __name__ == "__main__":
